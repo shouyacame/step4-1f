@@ -33,7 +33,8 @@ export default function Home() {
     if (!code) return;
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:8001/product/${code}`);
+      // 修正後
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${code}`);
       const data = await res.json();
       if (!data) throw new Error("商品がマスタ未登録です");
       setProduct(data);
@@ -67,7 +68,8 @@ export default function Home() {
     if (items.length === 0) return;
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8001/purchase", {
+     // 修正後
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/purchase`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
