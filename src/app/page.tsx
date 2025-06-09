@@ -38,9 +38,9 @@ export default function Home() {
       const data = await res.json();
       if (!data) throw new Error("商品がマスタ未登録です");
       setProduct(data);
-    } } catch (e) {
-        const err = e as Error;
-        setProductError(err.message);
+    } catch (e) {
+      const err = e as Error;
+      setProductError(err.message);
     } finally {
       setLoading(false);
     }
